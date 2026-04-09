@@ -2,9 +2,14 @@
   "name": "local-notes-sidebar",
   "displayName": "Local Notes Sidebar",
   "description": "Locally stored notes in an Activity Bar sidebar with folder tree support.",
-  "version": "0.2.0",
-  "publisher": "local",
+  "version": "0.2.1",
+  "publisher": "1manfactory",
   "license": "SEE LICENSE IN LICENSE",
+  "icon": "media/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/1manfactory/local-notes-sidebar"
+  },
   "engines": {
     "vscode": "^1.85.0"
   },
