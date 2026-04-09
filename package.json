@@ -1,0 +1,131 @@
+{
+  "name": "local-notes-sidebar",
+  "displayName": "Local Notes Sidebar",
+  "description": "Locally stored notes in an Activity Bar sidebar with folder tree support.",
+  "version": "0.2.0",
+  "publisher": "local",
+  "license": "SEE LICENSE IN LICENSE",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./extension.js",
+  "extensionKind": [
+    "ui"
+  ],
+  "activationEvents": [
+    "onView:localNotes.views.notes",
+    "onCommand:localNotes.refresh",
+    "onCommand:localNotes.newNote",
+    "onCommand:localNotes.newFolder",
+    "onCommand:localNotes.openNote",
+    "onCommand:localNotes.renameItem",
+    "onCommand:localNotes.deleteItem"
+  ],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "localNotes",
+          "title": "Notes",
+          "icon": "media/notes.svg"
+        }
+      ]
+    },
+    "views": {
+      "localNotes": [
+        {
+          "id": "localNotes.views.notes",
+          "name": "Notes"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "localNotes.refresh",
+        "title": "Refresh Notes",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "localNotes.newNote",
+        "title": "New Note",
+        "icon": "$(new-file)"
+      },
+      {
+        "command": "localNotes.newFolder",
+        "title": "New Folder",
+        "icon": "$(new-folder)"
+      },
+      {
+        "command": "localNotes.openNote",
+        "title": "Open Note"
+      },
+      {
+        "command": "localNotes.renameItem",
+        "title": "Rename"
+      },
+      {
+        "command": "localNotes.deleteItem",
+        "title": "Delete"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "localNotes.newNote",
+          "when": "view == localNotes.views.notes",
+          "group": "navigation@1"
+        },
+        {
+          "command": "localNotes.newFolder",
+          "when": "view == localNotes.views.notes",
+          "group": "navigation@2"
+        },
+        {
+          "command": "localNotes.refresh",
+          "when": "view == localNotes.views.notes",
+          "group": "navigation@3"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "localNotes.openNote",
+          "when": "view == localNotes.views.notes && viewItem == note",
+          "group": "inline@1"
+        },
+        {
+          "command": "localNotes.newNote",
+          "when": "view == localNotes.views.notes && viewItem == folder",
+          "group": "inline@2"
+        },
+        {
+          "command": "localNotes.newFolder",
+          "when": "view == localNotes.views.notes && viewItem == folder",
+          "group": "inline@3"
+        },
+        {
+          "command": "localNotes.renameItem",
+          "when": "view == localNotes.views.notes && viewItem == note",
+          "group": "navigation@1"
+        },
+        {
+          "command": "localNotes.renameItem",
+          "when": "view == localNotes.views.notes && viewItem == folder",
+          "group": "navigation@1"
+        },
+        {
+          "command": "localNotes.deleteItem",
+          "when": "view == localNotes.views.notes && viewItem == note",
+          "group": "navigation@2"
+        },
+        {
+          "command": "localNotes.deleteItem",
+          "when": "view == localNotes.views.notes && viewItem == folder",
+          "group": "navigation@2"
+        }
+      ]
+    }
+  }
+}
